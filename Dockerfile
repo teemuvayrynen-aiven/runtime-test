@@ -1,5 +1,7 @@
-FROM ghcr.io/home-assistant/home-assistant:stable
+FROM busybox:1.37
 
-ENV TZ=Europe/Helsinki
+COPY index.html /www/index.html
 
-EXPOSE 8123
+EXPOSE 8080
+
+CMD ["httpd", "-f", "-v", "-p", "8080", "-h", "/www"]
